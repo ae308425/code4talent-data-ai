@@ -7,3 +7,5 @@ CREATE TABLE IF NOT EXISTS weather_data(
     CLOUD_COVER DECIMAL,
     TIMESTAMP TIMESTAMP WITH TIME ZONE
 );
+
+--This is a test comment

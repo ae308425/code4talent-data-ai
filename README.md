@@ -152,7 +152,7 @@ pip install fastapi uvicorn requests sqlalchemy psycopg2-binary websockets
 # 3. Ejecutar servicios
 python ingest.py
 python processing.py
-uvicorn inference.app:app --reload
+uvicorn inference-app:app --reload
 
 # 4. Abrir interfaz
 open index.html

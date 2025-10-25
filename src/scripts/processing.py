@@ -1,10 +1,18 @@
 import sqlite3
 import json
+import os
 from ingest import get_weather_data
+import logging
 
-con = sqlite3.connect('weather.db')
+BASE_DIR = os.path.dirname(__file__)
+DB_PATH = os.path.join(BASE_DIR, "weather.db")
+SQL_PATH = os.path.join(BASE_DIR,  "init.sql")
 
-with open('init.sql') as f:
+logging.info("Conectando a base de datos")
+
+con = sqlite3.connect(DB_PATH)
+
+with open(SQL_PATH) as f:
     con.executescript(f.read())
 
 cur = con.cursor()
@@ -20,6 +28,7 @@ lon = data["longitude"]
 obs_time = data["hourly"]["time"] 
 temperature = data["hourly"]["temperature_2m"]
 humidity = data["hourly"]["relative_humidity_2m"]
+logging.info(f"Se va a insertar {len(temperature)} registros")
 
 for record in range(len(obs_time)):
     cur.execute("""
@@ -36,4 +45,5 @@ for record in range(len(obs_time)):
 
 
 con.commit()
+logging.info("Los datos fueron insertados corrrectamente")
 con.close()

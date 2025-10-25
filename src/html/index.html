@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Data Pipeline</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://demos.creative-tim.com/material-dashboard-pro/assets/css/material-dashboard.min.css?v=2.2.2" rel="stylesheet">
+</head>
+<body>
+   <div class="container mt-5" >
+    <h1 class="text-center">1st Hackathon North Highland</h1>
+  <div class="container mt-5">
+  <div class="container mt-5">
+    <h2 class="text-center">Git Out of Here - Team</h2>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0" id="data-table-series">
+          <thead>
+            <tr>
+              <th colspan="7" class="text-center">Series API</th>
+            </tr>
+            <tr>
+              <th class="text-center">Latitude</th>
+              <th class="text-center">Longitude</th>
+              <th class="text-center">Source</th>
+              <th class="text-center">Temperature</th>
+              <th class="text-center">Humidity</th>
+              <th class="text-center">Updated At</th>
+              <th class="text-center">Obs Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be inserted here dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0" id="data-table-anomaly">
+          <thead>
+            <tr>
+              <th colspan="8" class="text-center">Anomaly API</th>
+            </tr>
+            <tr>
+              <th class="text-center">Latitude</th>
+              <th class="text-center">Longitude</th>
+              <th class="text-center">Source</th>
+              <th class="text-center">Temperature</th>
+              <th class="text-center">Humidity</th>
+              <th class="text-center">Updated At</th>
+              <th class="text-center">Observation Time</th>
+              <th class="text-center">Is Anomaly?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be inserted here dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+   <div class="container mt-5">
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0" id="data-table-prediction">
+          <thead>
+            <tr>
+              <th colspan="7" class="text-center">Prediction API</th>
+            </tr>
+            <tr>
+              <th class="text-center">Latitude</th>
+              <th class="text-center">Longitude</th>
+              <th class="text-center">Source</th>
+              <th class="text-center">Temperature</th>
+              <th class="text-center">Humidity</th>
+              <th class="text-center">Updated At</th>
+              <th class="text-center">Observation Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be inserted here dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/series/');
+        const data = await response.json();
+        console.log(data);
+        const tableBody = document.querySelector('#data-table-series tbody');
+        tableBody.innerHTML = '';
+
+         data.data.forEach(record => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="text-center">${record.lat}</td>
+            <td class="text-center">${record.lon}</td>
+            <td class="text-center">${record.source}</td>
+            <td class="text-center">${record.temperature} °C</td>
+            <td class="text-center">${record.humidity} %</td>
+            <td class="text-center">${record.updated_at}</td>
+            <td class="text-center">${record.obs_time}</td>
+          `;
+          tableBody.appendChild(row); // Add the row to the table body
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+     async function fetchDataAnomaly() {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/anomaly/latest/');
+        const data = await response.json();
+
+        const tableBody = document.querySelector('#data-table-anomaly tbody');
+        tableBody.innerHTML = '';
+
+        const record = data.data;
+        //console.log(record);
+        const row = document.createElement('tr');
+          row.innerHTML = `
+          <td class="text-center">${record.lat}</td>
+          <td class="text-center">${record.lon}</td>
+          <td class="text-center">${record.source}</td>
+          <td class="text-center">${record.temperature} °C</td>
+          <td class="text-center">${record.humidity} %</td>
+          <td class="text-center">${record.updated_at}</td>
+          <td class="text-center">${record.obs_time}</td>
+          <td class="text-center">${record.is_anomaly}</td>
+        `;
+        tableBody.appendChild(row)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+     async function fetchDataPrediction() {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/predict/next/');
+        const data = await response.json();
+
+        const tableBody = document.querySelector('#data-table-prediction tbody');
+        tableBody.innerHTML = '';
+
+        const record = data.data[0];
+        //console.log(record);
+        //console.log(data);
+
+        const row = document.createElement('tr');
+          row.innerHTML = `
+          <td class="text-center">${record.lat}</td>
+          <td class="text-center">${record.lon}</td>
+          <td class="text-center">${record.source}</td>
+          <td class="text-center">${record.temperature} °C</td>
+          <td class="text-center">${record.humidity} %</td>
+          <td class="text-center">${record.updated_at}</td>
+          <td class="text-center">${record.obs_time}</td>
+        `;
+        tableBody.appendChild(row)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    window.onload = function() {
+  fetchDataAnomaly();
+  fetchData();
+  fetchDataPrediction();
+  };
+  </script>
+
+</body>
+</html>
+
+<!-- https://www.creative-tim.com/learning-lab/bootstrap/table-with-api-data/material-dashboard -->

@@ -4,6 +4,7 @@ import psycopg2
 import os
 from decimal import Decimal
 from datetime import datetime
+import traceback
 
 router = APIRouter()
 
@@ -61,7 +62,8 @@ async def weather_ws(websocket: WebSocket):
                         {col: safe_convert(val) for col, val in zip(columns, row)}
                         for row in rows
                     ]
-            await websocket.send_json({data})
+            print(f"📦 Enviando {len(data)} registros")
+            await websocket.send_json({"ultimo_registro":data})
             
 
     
@@ -69,6 +71,7 @@ async def weather_ws(websocket: WebSocket):
         print("Websocket desconectado")
         active_conn.remove(websocket)
     except Exception as e:
-        print(f"Error: {e}")
+        print("❌ Error en WebSocket:")
+        traceback.print_exc()
         await websocket.close()
     

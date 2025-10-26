@@ -638,3 +638,31 @@
 2025-10-26 01:05:58,041 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 11.1, 'relative_humidity_2m': 100, 'wind_speed_10m': 3.9, 'cloud_cover': 100, 'timestamp': '2025-10-26T01:05:58.038174'}
 2025-10-26 01:06:13,767 - INFO - Mensaje publicado en Redis.
 2025-10-26 01:06:13,768 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 11.1, 'relative_humidity_2m': 100, 'wind_speed_10m': 3.9, 'cloud_cover': 100, 'timestamp': '2025-10-26T01:06:13.766335'}
+2025-10-26 11:55:27,036 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:55:27,036 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:55:27.028776'}
+2025-10-26 11:55:42,786 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:55:42,788 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:55:42.783892'}
+2025-10-26 11:55:58,526 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:55:58,526 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:55:58.524714'}
+2025-10-26 11:56:14,259 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:56:14,260 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:56:14.258364'}
+2025-10-26 11:56:30,017 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:56:30,017 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:56:30.014243'}
+2025-10-26 11:56:45,759 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:56:45,760 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:56:45.756671'}
+2025-10-26 11:57:01,500 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:57:01,500 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:57:01.499039'}
+2025-10-26 11:57:17,232 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:57:17,232 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:57:17.231162'}
+2025-10-26 11:57:32,977 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:57:32,977 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:57:32.974715'}
+2025-10-26 11:57:48,726 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:57:48,727 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:57:48.723952'}
+2025-10-26 11:58:04,480 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:58:04,482 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:58:04.479054'}
+2025-10-26 11:58:20,234 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:58:20,234 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:58:20.231819'}
+2025-10-26 11:58:35,961 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:58:35,962 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:58:35.960644'}
+2025-10-26 11:58:51,697 - INFO - Mensaje publicado en Redis.
+2025-10-26 11:58:51,697 - DEBUG - Contenido del mensaje: {'latitude': -0.25, 'longitude': -78.5, 'temperature_2m': 14.2, 'relative_humidity_2m': 91, 'wind_speed_10m': 8.7, 'cloud_cover': 98, 'timestamp': '2025-10-26T11:58:51.694000'}

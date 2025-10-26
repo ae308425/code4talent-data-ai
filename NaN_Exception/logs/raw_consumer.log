@@ -952,3 +952,40 @@
 2025-10-26 01:06:13,768 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 11.1, "relative_humidity_2m": 100, "wind_speed_10m": 3.9, "cloud_cover": 100, "timestamp": "2025-10-26T01:06:13.766335"}
 2025-10-26 01:06:13,771 - INFO - Datos insertados en PostgreSQL.
 
+2025-10-26 11:55:44,126 - INFO - Esperando mensajes en Redis...
+2025-10-26 11:55:58,526 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:55:58.524714"}
+2025-10-26 11:55:58,537 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:56:14,259 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:56:14.258364"}
+2025-10-26 11:56:14,262 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:56:30,017 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:56:30.014243"}
+2025-10-26 11:56:30,022 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:56:45,759 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:56:45.756671"}
+2025-10-26 11:56:45,764 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:57:01,500 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:57:01.499039"}
+2025-10-26 11:57:01,504 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:57:17,232 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:57:17.231162"}
+2025-10-26 11:57:17,236 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:57:32,977 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:57:32.974715"}
+2025-10-26 11:57:32,982 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:57:48,727 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:57:48.723952"}
+2025-10-26 11:57:48,732 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:58:04,481 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:58:04.479054"}
+2025-10-26 11:58:04,489 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:58:20,234 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:58:20.231819"}
+2025-10-26 11:58:20,240 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:58:35,961 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:58:35.960644"}
+2025-10-26 11:58:35,964 - INFO - Datos insertados en PostgreSQL.
+
+2025-10-26 11:58:51,697 - INFO - Mensaje recibido: {"latitude": -0.25, "longitude": -78.5, "temperature_2m": 14.2, "relative_humidity_2m": 91, "wind_speed_10m": 8.7, "cloud_cover": 98, "timestamp": "2025-10-26T11:58:51.694000"}
+2025-10-26 11:58:51,701 - INFO - Datos insertados en PostgreSQL.
+

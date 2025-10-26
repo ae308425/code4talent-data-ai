@@ -4,6 +4,7 @@ import psycopg2
 import os
 from decimal import Decimal
 from datetime import datetime
+from datetime import date
 import traceback
 
 router = APIRouter()
@@ -28,6 +29,8 @@ def safe_convert(value):
         return float(value)
     if isinstance(value, datetime):
         return value.isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
     return value
 
 active_conn = []
@@ -46,15 +49,16 @@ async def weather_ws(websocket: WebSocket):
                 with conn.cursor() as cur:
                     cur.execute("""
                                 SELECT
-                                LATITUDE,
-                                LONGITUDE,
-                                TEMPERATURE,
-                                RELATIVE_HUMIDITY, 
-                                WIND_SPEED, 
-                                CLOUD_COVER,
-                                TIMESTAMP
-                                FROM weather_data
-                                ORDER BY timestamp DESC;
+                                latitude, 
+                                longitude, 
+                                date, 
+                                hour,
+                                avg_temperature, 
+                                avg_relative_humidity,
+                                avg_wind_speed, 
+                                avg_cloud_cover, 
+                                mm_temp
+                                FROM weather_data_view;
                                 """)
                     rows = cur.fetchall()
                     columns = [desc[0] for desc in cur.description]
@@ -62,6 +66,13 @@ async def weather_ws(websocket: WebSocket):
                         {col: safe_convert(val) for col, val in zip(columns, row)}
                         for row in rows
                     ]
+                    
+                    for record in data:
+                        try:
+                            record["timestamp"] = f"{record['date']}T{int(record['hour']):02d}:00:00"
+                        except Exception:
+                            record["timestamp"] = None
+                            
             print(f"📦 Enviando {len(data)} registros")
             await websocket.send_json({"ultimo_registro":data})
             

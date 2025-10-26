@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌤️ Weather Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f6f8fa;
+    }
+    h2 {
+      color: #333;
+    }
+    .summary {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .card {
+      flex: 1;
+      min-width: 180px;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .card h3 {
+      margin: 0;
+      color: #555;
+    }
+    .card p {
+      margin: 5px 0 0 0;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #0077b6;
+    }
+    canvas {
+      max-width: 900px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2>🌦️ Real-Time Weather Data Dashboard</h2>
+
+  <!-- 🔸 Resumen -->
+  <div class="summary">
+    <div class="card">
+      <h3>🌡️ Temperatura promedio</h3>
+      <p id="avgTemp">-- °C</p>
+    </div>
+    <div class="card">
+      <h3>💧 Humedad promedio</h3>
+      <p id="avgHumidity">-- %</p>
+    </div>
+    <div class="card">
+      <h3>💨 Vel. viento</h3>
+      <p id="avgWind">-- m/s</p>
+    </div>
+    <div class="card">
+      <h3>☁️ Nubosidad</h3>
+      <p id="avgClouds">-- %</p>
+    </div>
+  </div>
+
+  <!-- 🔹 Gráficos -->
+  <canvas id="tempChart"></canvas>
+  <canvas id="humidityChart"></canvas>
+
+  <script>
+    // === Configurar los gráficos ===
+    const tempCtx = document.getElementById("tempChart");
+    const humidityCtx = document.getElementById("humidityChart");
+
+    const tempChart = new Chart(tempCtx, {
+      type: "line",
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: "Temperatura (°C)",
+            data: [],
+            borderColor: "rgba(255, 99, 132, 1)",
+            tension: 0.3,
+            fill: false,
+          },
+          {
+            label: "Temp. móvil (mm_temp)",
+            data: [],
+            borderColor: "rgba(54, 162, 235, 1)",
+            borderDash: [5, 5],
+            tension: 0.3,
+            fill: false,
+          }
+        ],
+      },
+      options: {
+        responsive: true,
+        animation: false,
+        scales: {
+          x: { title: { display: true, text: "Hora" } },
+          y: { title: { display: true, text: "Temperatura (°C)" } }
+        }
+      }
+    });
+
+    const humidityChart = new Chart(humidityCtx, {
+      type: "line",
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: "Humedad (%)",
+            data: [],
+            borderColor: "rgba(75, 192, 192, 1)",
+            tension: 0.3,
+            fill: false,
+          },
+          {
+            label: "Nubosidad (%)",
+            data: [],
+            borderColor: "rgba(255, 205, 86, 1)",
+            tension: 0.3,
+            fill: false,
+          }
+        ],
+      },
+      options: {
+        responsive: true,
+        animation: false,
+        scales: {
+          x: { title: { display: true, text: "Hora" } },
+          y: { title: { display: true, text: "Porcentaje (%)" } }
+        }
+      }
+    });
+
+    // === Conexión WebSocket ===
+    const ws = new WebSocket("ws://127.0.0.1:8000/ws/weather");
+
+    ws.onopen = () => console.log("✅ Conectado al WebSocket FastAPI");
+    ws.onclose = () => console.log("🔌 Conexión cerrada");
+    ws.onerror = (err) => console.error("❌ Error:", err);
+
+    ws.onmessage = (event) => {
+      const payload = JSON.parse(event.data);
+      const records = payload.ultimo_registro || payload.ultimo_registro || [];
+      if (records.length === 0) return;
+
+      console.log("📥 Datos recibidos:", records.slice(0, 3)); // muestra primeros 3
+
+      // === Actualizar valores resumen ===
+      const avg = (arr, key) => arr.reduce((sum, r) => sum + (r[key] || 0), 0) / arr.length;
+      document.getElementById("avgTemp").textContent = avg(records, "avg_temperature").toFixed(1) + " °C";
+      document.getElementById("avgHumidity").textContent = avg(records, "avg_relative_humidity").toFixed(0) + " %";
+      document.getElementById("avgWind").textContent = avg(records, "avg_wind_speed").toFixed(1) + " m/s";
+      document.getElementById("avgClouds").textContent = avg(records, "avg_cloud_cover").toFixed(0) + " %";
+
+      // === Preparar datos para los gráficos ===
+      const labels = records.map(r => `${r.hour}:00`);
+      const temps = records.map(r => r.avg_temperature);
+      const mmTemps = records.map(r => r.mm_temp);
+      const hums = records.map(r => r.avg_relative_humidity);
+      const clouds = records.map(r => r.avg_cloud_cover);
+
+      // === Actualizar gráfico de temperatura ===
+      tempChart.data.labels = labels;
+      tempChart.data.datasets[0].data = temps;
+      tempChart.data.datasets[1].data = mmTemps;
+      tempChart.update();
+
+      // === Actualizar gráfico de humedad/nubosidad ===
+      humidityChart.data.labels = labels;
+      humidityChart.data.datasets[0].data = hums;
+      humidityChart.data.datasets[1].data = clouds;
+      humidityChart.update();
+    };
+  </script>
+</body>
+</html>
+
